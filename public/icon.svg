@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="mathGenieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#4f46e5" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Rounded Rect -->
+  <rect width="512" height="512" rx="128" fill="url(#mathGenieGrad)" />
+  <!-- Sparkle Accents -->
+  <path d="M120 140 L130 110 L140 140 L170 150 L140 160 L130 190 L120 160 L90 150 Z" fill="#fde047" opacity="0.9" />
+  <path d="M390 100 L396 82 L402 100 L420 106 L402 112 L396 130 L390 112 L372 106 Z" fill="#fde047" opacity="0.8" />
+  <path d="M400 370 L408 346 L416 370 L440 378 L416 386 L408 410 L400 386 L376 378 Z" fill="#fde047" opacity="0.85" />
+  <!-- Central Math Symbol: Sigma & Integral Stylized -->
+  <g filter="url(#glow)">
+    <!-- Mathematical Symbol PI / SIGMA in Golden Glow -->
+    <text x="256" y="320" font-family="'Poppins', sans-serif" font-weight="900" font-size="220" text-anchor="middle" fill="#ffffff" letter-spacing="-6">
+      &Sigma;
+    </text>
+  </g>
+  <!-- Graduation / Magic Wand Accent -->
+  <path d="M210 390 L302 390" stroke="#fde047" stroke-width="16" stroke-linecap="round" />
+  <circle cx="330" cy="390" r="12" fill="#fde047" />
+</svg>

@@ -1,0 +1,6 @@
+{
+  "name": "MathGenie – Engineering Maths Made Simple",
+  "description": "Comprehensive diploma and degree engineering mathematics syllabus taught from zero level in simple Hinglish, with formulas, shortcuts, step-by-step solved examples, and an interactive AI doubt solver.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
