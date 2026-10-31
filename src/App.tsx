@@ -13,6 +13,8 @@ import { TopicDetail } from './components/TopicDetail';
 import { PYQHub } from './components/PYQHub';
 import { FormulaCheatSheetModal } from './components/FormulaCheatSheetModal';
 import { VercelDeployModal } from './components/VercelDeployModal';
+import { DirectChromeInstallModal } from './components/DirectChromeInstallModal';
+import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { AIDoubtSolver } from './components/AIDoubtSolver';
 
 export default function App() {
@@ -36,6 +38,9 @@ export default function App() {
 
   // Vercel deployment modal
   const [isVercelModalOpen, setIsVercelModalOpen] = useState(false);
+
+  // Direct Chrome Install modal
+  const [isChromeInstallModalOpen, setIsChromeInstallModalOpen] = useState(false);
 
   // Dark mode state
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -133,7 +138,12 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors font-sans">
       
-      {/* Top Header / Navigation with PWA Install Button */}
+      {/* PWA Install Banner: "Install directly from Chrome (Best & Easiest — No APK tool needed!)" */}
+      <InstallPromptBanner
+        onOpenInstallModal={() => setIsChromeInstallModalOpen(true)}
+      />
+
+      {/* Top Header / Navigation */}
       <Navbar
         completedCount={completedTopicIds.length}
         totalCount={allSubTopics.length}
@@ -197,6 +207,7 @@ export default function App() {
               onSelectTopic={handleSelectTopic}
               onOpenCheatSheet={() => setIsCheatSheetOpen(true)}
               onSelectPYQ={handleSelectPYQ}
+              onOpenDirectChromeInstall={() => setIsChromeInstallModalOpen(true)}
             />
           )}
         </main>
@@ -212,6 +223,13 @@ export default function App() {
             Built with ❤️ for diploma and degree engineering students. All 5 units + PYQs (S25, W25, S26).
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsChromeInstallModalOpen(true)}
+              className="text-emerald-600 dark:text-emerald-400 hover:underline font-extrabold"
+            >
+              📲 Install App (Direct Chrome)
+            </button>
+            <span>•</span>
             <button
               onClick={() => handleSelectPYQ()}
               className="text-amber-600 dark:text-amber-400 hover:underline font-bold"
@@ -242,6 +260,12 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Direct Chrome Install Modal */}
+      <DirectChromeInstallModal
+        isOpen={isChromeInstallModalOpen}
+        onClose={() => setIsChromeInstallModalOpen(false)}
+      />
 
       {/* Exam Shortcuts Cheat Sheet Modal */}
       <FormulaCheatSheetModal

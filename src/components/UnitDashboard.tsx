@@ -10,7 +10,9 @@ import {
   Award,
   Layers,
   Search,
-  FileText
+  FileText,
+  Smartphone,
+  Download
 } from 'lucide-react';
 
 interface UnitDashboardProps {
@@ -20,6 +22,7 @@ interface UnitDashboardProps {
   onSelectTopic: (topicId: string) => void;
   onOpenCheatSheet: () => void;
   onSelectPYQ?: (unitId?: number) => void;
+  onOpenDirectChromeInstall?: () => void;
 }
 
 export const UnitDashboard: React.FC<UnitDashboardProps> = ({
@@ -29,6 +32,7 @@ export const UnitDashboard: React.FC<UnitDashboardProps> = ({
   onSelectTopic,
   onOpenCheatSheet,
   onSelectPYQ,
+  onOpenDirectChromeInstall,
 }) => {
   const isTopicCompleted = (id: string) => completedTopicIds.includes(id);
 
@@ -76,6 +80,16 @@ export const UnitDashboard: React.FC<UnitDashboardProps> = ({
               </button>
             )}
 
+            {onOpenDirectChromeInstall && (
+              <button
+                onClick={onOpenDirectChromeInstall}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md transition transform hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <Smartphone className="w-4 h-4 text-slate-950" />
+                <span>Install on Mobile (No APK Needed)</span>
+              </button>
+            )}
+
             <button
               onClick={onOpenCheatSheet}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600/40 hover:bg-indigo-600/60 border border-indigo-300/30 text-white font-medium text-xs sm:text-sm backdrop-blur-xs transition"
@@ -101,11 +115,37 @@ export const UnitDashboard: React.FC<UnitDashboardProps> = ({
             <div className="font-bold text-amber-300 text-base">S25 • W25 • S26</div>
           </div>
           <div>
-            <div className="text-indigo-200 text-[11px]">Instant Help</div>
-            <div className="font-bold text-white text-base">AI Doubt Solver</div>
+            <div className="text-indigo-200 text-[11px]">Install on Phone</div>
+            <div className="font-bold text-emerald-300 text-base">Direct Chrome PWA</div>
           </div>
         </div>
       </section>
+
+      {/* Direct Chrome Install Callout Banner */}
+      {onOpenDirectChromeInstall && (
+        <section className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-emerald-500/15 via-teal-500/10 to-indigo-500/15 border border-emerald-300/80 dark:border-emerald-800/60 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
+          <div className="space-y-1.5 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase bg-emerald-200 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-200">
+              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Install directly from Chrome (Best &amp; Easiest — No APK tool needed!)</span>
+            </div>
+            <h3 className="text-lg font-extrabold font-heading text-slate-900 dark:text-white">
+              Phone me bina kisi APK tool ke direct install karein!
+            </h3>
+            <p className="text-xs text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+              Mobile Chrome browser me ye page khol kar <strong>Three-Dots (⋮)</strong> &rarr; <strong>"Install app"</strong> dabayein. Na koi virus risk, na permission warning, aur internet ke bina offline study karein!
+            </p>
+          </div>
+
+          <button
+            onClick={onOpenDirectChromeInstall}
+            className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-xs sm:text-sm whitespace-nowrap shadow-md shadow-emerald-500/20 transition active:scale-95 flex items-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            <span>Install Directly on Mobile</span>
+          </button>
+        </section>
+      )}
 
       {/* Dedicated PYQ Callout Banner */}
       {onSelectPYQ && (

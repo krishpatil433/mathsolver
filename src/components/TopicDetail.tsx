@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SubTopic, Unit, EquationBreakdown, ExamWritingTemplate } from '../types/math';
 import { MathView } from './MathView';
+import { HinglishAudioPlayer } from './HinglishAudioPlayer';
 import confetti from 'canvas-confetti';
 import { 
   CheckCircle2, 
@@ -184,6 +185,9 @@ export const TopicDetail: React.FC<TopicDetailProps> = ({
       {/* Quick Jump Anchor Tabs */}
       <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 text-xs border-y border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-400 sticky top-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-20">
         <span className="text-[10px] uppercase font-bold text-slate-400 mr-1 shrink-0">Jump to:</span>
+        <a href="#section-audio-class" className="px-2.5 py-1 rounded-md bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 font-bold whitespace-nowrap">
+          🎙️ Hinglish Audio
+        </a>
         <a href="#section-ye-kya-hai" className="px-2.5 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 whitespace-nowrap">
           1. Ye Kya Hai?
         </a>
@@ -209,6 +213,26 @@ export const TopicDetail: React.FC<TopicDetailProps> = ({
           8. Practice Questions
         </a>
       </div>
+
+      {/* ========================================================
+          AUDIO WALKTHROUGH & BHAIYA KI HINGLISH CLASS
+         ======================================================== */}
+      <section id="section-audio-class" className="scroll-mt-28 space-y-3">
+        <HinglishAudioPlayer
+          topicTitle={topic.title}
+          hinglishScript={`Hello dost! Main MathGenie Bhaiya. Aaj hum topic ${topic.id} ${topic.title} seekhenge. Pehle samjho ye kya cheez hai: ${topic.yeKyaHai.definition}. Iski real life analogy socho: ${topic.yeKyaHai.analogy}. Ground level se samjhe toh: ${topic.groundLevel.intro}. Exam tip: ${topic.examTip}. Ghabrane ki bilkul zarurat nahi hai, step by step solved example dekho!`}
+        />
+
+        <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-2">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-amber-200">
+            <Sparkles className="w-4 h-4 text-amber-600" />
+            <span>Bhaiya Ka Friendly Note (Senior Ki Advice):</span>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-normal">
+            "Dekho junior, <strong>{topic.title}</strong> se log isliye darte hain kyunki textbooks me formulas sidhe phenk diye jate hain. Yahan hum pehle concept ko real-life se connect karenge, har symbol ka matlab Hindi me dekhenge, aur fir previous papers ke questions solve karenge. Relax hoke step by step scroll karo!"
+          </p>
+        </div>
+      </section>
 
       {/* ========================================================
           SECTION A: "YE KYA HAI?" (Definition + Real-life Analogy)
